@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +20,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $noor=User::factory()->create([
+            'username' => 'noor',
+            'name' => 'Md Ashickur Rahman Noor',
+            'email' => 'ashickur.noor@gmail.com',
+            'uuid'=>sha1('noor'.time()),
+        ]);
+
+        Post::factory(20)->create([
+            'author_id' => $noor->id
+        ]);
+
+        $this->call([
+            CategorySeeder::class,
+        ]);
     }
 }

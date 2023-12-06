@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'tiny_api_key'=>env('TINY_API_KEY'),
+
 ];
