@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    public function getroutekeyname()
+    {
+        return 'slug';
+    }
 
     protected $fillable = [
         'name',

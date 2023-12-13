@@ -14,7 +14,9 @@ class CategoryController extends Controller {
         $this->middleware('auth')->except('index', 'show');
     }
     public function index() {
-        //
+        return view('categories.index', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -41,21 +43,29 @@ class CategoryController extends Controller {
      * Display the specified resource.
      */
     public function show(Category $category) {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Category $category) {
-        //
+        return view('categories.edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateCategoryRequest $request, Category $category) {
-        //
+        $request->validated();
+        $category->update([
+            'name' => $request->name,
+            'slug' => \Str::slug($request->name),
+            'description' => $request->description,
+        ]);
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
     }
 
     /**

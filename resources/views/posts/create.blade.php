@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     <x-slot:title>New Post</x-slot>
     <x-slot:styles>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css">
@@ -6,6 +6,16 @@
     </x-slot:styles>
     <x-slot:maincontent>
         <div class="max-w-7xl mx-auto p-8 bg-white rounded-lg shadow-xl">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
@@ -34,7 +44,9 @@
 
                 <div class="mb-4">
                     <label for="category" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
-                    <x-category-select class="select2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :selector="'select2'" :categories="$categories" />
+                    <x-category-select
+                        class="select2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        :selector="'select2'" :categories="$categories" />
                 </div>
 
                 <div class="mb-4">
@@ -57,7 +69,7 @@
 
     </x-slot:maincontent>
     <x-slot:scripts>
-        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"> </script>
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -67,4 +79,4 @@
 
         <x-head.tinymce-config :selector="'#content'"></x-head.tinymce-config>
     </x-slot:scripts>
-</x-app-layout>
+</x-layouts.app>

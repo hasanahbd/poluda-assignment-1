@@ -24,10 +24,12 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|min:10',
             'content' => 'required',
-            'excerpt' => 'required|min:25'            
+            'excerpt' => 'required|min:25',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id'
         ];
     }
-    public function messages():array
+    public function messages(): array
     {
         return [
             'title.required' => 'A title is required',

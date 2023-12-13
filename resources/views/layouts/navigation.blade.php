@@ -8,6 +8,7 @@
                     <li><a class="hover:text-gray-200 hover:underline px-4" href="{{route('posts.create')}}">Create Post</a></li>
                 @endauth
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{route('categories.index')}}">All Categories</a></li>
             </ul>
         </nav>
 

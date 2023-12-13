@@ -25,6 +25,8 @@ class UpdatePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'excerpt' => 'required|string|max:255',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id'
         ];
     }
 }

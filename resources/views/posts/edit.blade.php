@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     <x-slot:title>New Post</x-slot>
     <x-slot:maincontent>
         <div class="max-w-7xl mx-auto p-8 bg-white rounded-lg shadow-xl">
@@ -59,4 +59,4 @@
     <x-slot:scripts>
         <x-head.tinymce-config :selector="'#content'"></x-head.tinymce-config>
     </x-slot:scripts>
-</x-app-layout>
+</x-layouts.app>
